@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_blank">
+  </head>
+  <body>
+   <ul>
+     <? var result = getSheetData(); ?>
+     <? for (var i = 0; i < result.length; i++) { ?>
+        <li><a href="<?= result[i].link ?>">
+        <? if (result[i].isNew) { ?>
+        [NEW]<?= result[i].title ?>
+        <? } else { ?>
+        <?= result[i].title ?>
+        <? } ?>
+        </a></li>
+     <? } ?>
+   </ul>
+ </body>
+</html>

@@ -1,0 +1,24 @@
+<ul id="rssContainer">
+</ul>
+<script>
+    window.appendRssElems = function(data) {
+        var container = document.querySelector('#rssContainer');
+        for (var i = 0; i < data.length; i++) {
+            var feed = data[i];
+            var li = document.createElement("li"); 
+            var a = document.createElement("a");
+            a.setAttribute("href", feed.link);
+            var text = feed.title;
+            if(feed.isNew) {
+                text = "[NEW]" + text;
+            }
+            a.innerText = text;
+            li.appendChild(a);
+            container.appendChild(li);
+        }
+    };
+    var scriptEl = document.createElement('script');      
+    scriptEl.setAttribute('type','text/javascript');
+    scriptEl.setAttribute('src','{GAS_WEB_APP_URL}?callback=appendRssElems');
+    document.body.appendChild(scriptEl);
+</script>
